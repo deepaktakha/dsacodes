@@ -1,0 +1,109 @@
+
+#include <iostream>
+
+using namespace std;
+ class Node{
+   public:
+    int data;
+   Node* next;
+    
+Node(int data){
+    this->data = data;
+    this->next = next;
+}
+};
+void insertathead(Node* &head,int d){
+     Node* temp = new Node(d);
+     temp-> next = head;
+     head = temp;
+ }
+ 
+ void insertattail(Node* &tail,int d){
+     Node* temp = new Node(d);
+      tail->next = temp;
+     tail= tail->next;
+ } 
+ void insertatpos(Node* &head,Node* &tail,int pos,int d){
+     //insert at starting position or 1 position
+     if(pos==1){
+         insertathead(head,d);
+         return ;
+     }
+     
+     
+     
+     //first traverse till the pos element
+     Node* temp = head;
+     int cnt =1;
+     while(cnt<pos-1){
+         temp = temp->next;
+         cnt++;
+     }
+     //if anyone wnat to insert at last pos so we have to update tail also 
+     if(temp->next==NULL){
+         insertattail(tail,d);
+         return;
+     }
+     //create a new node and 
+     Node* insert = new Node(d);
+     insert->next = temp->next;
+     temp->next = insert;
+     
+ }
+  void print(Node* &head){
+      Node* temp = head;
+      while(temp!=NULL){
+          cout<<temp->data<<" ";
+          temp= temp->next;
+      }
+  }
+  //deletion of a node in lnked list 
+ void deletenode(Node* &head,Node* tail ,int pos){
+     //if deleting node is head node
+     if(pos==1){
+         Node* temp = head;
+         head = temp->next;
+         return;
+     }
+     Node* cur = head;
+     Node* prev = NULL;
+    int cnt = 1;
+     while(cnt<pos){
+         prev=cur;
+         cur=cur->next;
+         cnt++;
+     }
+     //if deletting node is last or tail node in this we have to update tail also
+    //  if(cur->next==NULL){
+    //      tail = prev;
+    //      prev->next=NULL;
+    //      return;
+    //  }
+     //normal deltion at any given postion
+     prev->next = cur->next;
+    if(prev->next == NULL){
+    tail=prev;
+    }
+     cur->next = NULL;
+ }
+
+int main()
+{ Node* node1 = new Node(15);
+  Node* head = node1;
+  Node* tail = node1;
+  
+ // insertathead(head,12);
+ // insertathead(head,154);
+  insertattail(tail,142);
+  insertattail(tail,555);
+ // insertatpos(head,tail,3,4949);
+//  insertatpos(head,tail,1,44443);
+//  insertatpos(head,tail,8,43646343);
+  deletenode(head,tail,3);
+  cout<<"tail is "<<tail->data<<endl;
+   cout<<"head is "<<head->data<<endl;
+   insertattail(tail,444);
+  
+  print(head);
+  return 0;
+}
