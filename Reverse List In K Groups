@@ -1,0 +1,42 @@
+int getlength(Node* head){
+      int len = 0;
+    while(head!=NULL){
+        len++;
+        head=head->next;
+       
+    }
+    return len;
+    // cout<<"len is"<<len<<endl;
+   
+ }
+Node* kReverse(Node* head, int k) {
+    int n =  getlength(head);
+     Node* next= NULL;
+    Node* cur = head;
+    Node* prev = NULL;
+    int count = 0;
+   
+    // base case
+    if(head == NULL || n<k){
+        return head ;
+    }
+    //reverse first k elemnets
+   
+    
+    while(cur!=NULL && count<k){
+        next = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+        count++;
+
+    }
+    //ab isse aage recursion sambal lega
+   
+    if(next!=NULL ){
+    head->next = kReverse(next,k);}
+
+    return prev;
+
+
+}
