@@ -13,106 +13,108 @@
     };
 
 *************************************************/
-     Node* floydDetectLoop(Node* head) {
+    //  Node* floydDetectLoop(Node* head) {
 
-    if(head == NULL)
+    // if(head == NULL)
 
-        return NULL;
+    //     return NULL;
 
-    Node* slow = head;
+    // Node* slow = head;
 
-    Node* fast = head;
+    // Node* fast = head;
 
-    bool cycleFound = false;
+    // bool cycleFound = false;
 
-    while(slow != NULL && fast !=NULL && fast->next != NULL ) {    
+    // while(slow != NULL && fast !=NULL && fast->next != NULL ) {    
 
-        fast = fast -> next -> next;
+    //     fast = fast -> next -> next;
 
-        slow = slow -> next;
+    //     slow = slow -> next;
 
-        if(slow == fast) {
+    //     if(slow == fast) {
 
-            cycleFound=true;
+    //         cycleFound=true;
 
-            fast = head;
+    //         fast = head;
 
-            while(fast != slow){
+    //         while(fast != slow){
 
-                slow = slow -> next;
+    //             slow = slow -> next;
 
-                fast = fast -> next;
+    //             fast = fast -> next;
 
-            }
+    //         }
 
-            return slow;
+    //         return slow;
 
-        }
+    //     }
 
-    }   //cycle is not found -->return NULL
+    // }   //cycle is not found -->return NULL
 
-    return NULL;}
+    // return NULL;}
 
  
 
 
-Node *removeLoop(Node *head)
-{ Node* startingNode = floydDetectLoop(head);
+Node *removeLoop(Node *head){
+// { Node* startingNode = floydDetectLoop(head);
 
     
 
-    if(startingNode == NULL){
-     return head;}
+//     if(startingNode == NULL){
+//      return head;}
 
-    Node* temp = startingNode;
+//     Node* temp = startingNode;
 
  
 
-    while(temp -> next != startingNode) {
+//     while(temp -> next != startingNode) {
 
-        temp = temp -> next;
+//         temp = temp -> next;
 
-    }   
-   temp -> next = NULL;
+//     }   
+//    temp -> next = NULL;
 
-    return head;
+//     return head;
 
-}
+// }
 
 
  //this is written by me its showing error in one code only where cycle starts from 0
-//   Node* slow = head;
-//     Node* fast =head;
-//     if(head==NULL){
-//         return head;
-//     }
-//     while(slow!=NULL && fast!=NULL){
-//         fast=fast->next;
-//     if(fast!=NULL){
-//            fast=fast->next;
-//         }
-//         slow = slow->next;
-//         if(slow==fast){
-//           break;
-//         }
-//     }
-//      if(slow==NULL){
-//         return head;
-//     }
-//     fast = head;
+  Node* slow = head;
+    Node* fast =head;
+    if(head==NULL){
+        return head;
+    }
+    while(slow!=NULL && fast!=NULL){
+        fast=fast->next;
+    if(fast!=NULL){
+           fast=fast->next;
+        }
+        slow = slow->next;
+         if(fast==NULL){
+        return head;
+       }
+        
+        if(slow==fast){
+          break;
+        }
+    }
+    
+   slow = head;
    
     
-//     while(fast!=slow){
-//         slow = slow->next;
-//         fast = fast->next;
-//     }
+    while(fast!=slow){
+        slow = slow->next;
+        fast = fast->next;
+    }
     
-//     while(fast->next!=slow){
-//         fast= fast->next;
-//     }
-//     fast->next = NULL;
-//     return head;  
+    while(fast->next!=slow){
+        fast= fast->next;
+    }
+    fast->next = NULL;
+    return head;  
 
-
+}
 
 
