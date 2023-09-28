@@ -1,0 +1,43 @@
+//this has a TC of O(n^2) so it may show TLC
+
+#include <bits/stdc++.h> 
+/****************************************************************
+    Following is the class structure of the Node class:
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+*****************************************************************/
+
+Node *removeDuplicates(Node *head)
+{
+    // Write your code here
+    if(head==NULL){
+        return NULL;
+    }
+    Node* cur = head;
+    while(cur!=NULL){
+        
+        Node* forward = cur->next;
+        Node* now = cur;
+        while(forward!=NULL){
+        if(cur->data == forward->data)
+        { now->next = forward->next;
+          Node* nodetodelete = forward;
+         delete(nodetodelete);
+          forward= forward->next;
+
+        }else{
+            forward = forward->next;
+            now = now->next;
+        }
+        }cur=cur->next;
+    }return head;
+}
