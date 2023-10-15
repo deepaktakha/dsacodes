@@ -1,0 +1,32 @@
+
+     
+string read(int n, vector<int> book, int target)
+{
+    sort(book.begin(), book.end());
+
+   int left = 0;   
+    int right = n-1;
+
+   while(left < right){    
+           if(book[left] + book[right] == target){ 
+             return "YES";        }     
+    else if(book[left] + book[right] < target){     
+           left++;        }  
+      else{  right--;   }   
+       }    return "NO";
+        }  
+        // this is o(n2 ) and above code in O(n) with 2 pointer approach
+//     // Write your code here.
+//     // int i=0,j=i+1;
+//     // pages(n,book,target,i,j);
+//   if(target==0||target==1){
+//       return "NO";
+//   }
+//   for(int i = 0;i<book.size();i++){
+//       for(int j=i+1;j<book.size();j++){
+//           if(book[i]+book[j]==target){
+//               return "YES";
+//           }
+//       }
+//   }return "NO";
+//}
